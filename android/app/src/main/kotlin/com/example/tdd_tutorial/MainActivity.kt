@@ -1,4 +1,4 @@
-package com.example.tdd_tutorial
+package com.example.tdd_bloc_clean_architecture
 
 import io.flutter.embedding.android.FlutterActivity
 

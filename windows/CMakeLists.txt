@@ -1,10 +1,10 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
-project(tdd_tutorial LANGUAGES CXX)
+project(tdd_bloc_clean_architecture LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "tdd_tutorial")
+set(BINARY_NAME "tdd_bloc_clean_architecture")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

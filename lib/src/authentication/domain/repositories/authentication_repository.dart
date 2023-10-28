@@ -1,5 +1,5 @@
-import 'package:tdd_tutorial/core/utils/typedef.dart';
-import 'package:tdd_tutorial/src/authentication/domain/entities/user.dart';
+import 'package:tdd_bloc_clean_architecture/core/utils/typedef.dart';
+import 'package:tdd_bloc_clean_architecture/src/authentication/domain/entities/user.dart';
 
 abstract class AuthenticationRepository {
   const AuthenticationRepository();
