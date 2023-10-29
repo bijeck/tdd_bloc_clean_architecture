@@ -11,6 +11,14 @@ class UserModel extends User {
     required super.avatar,
   });
 
+  const UserModel.empty()
+      : this(
+          id: '1',
+          avatar: '_empty.string',
+          createdAt: '_empty.string',
+          name: '_empty.string',
+        );
+
   UserModel copyWith({
     String? createdAt,
     String? name,
@@ -37,9 +45,9 @@ class UserModel extends User {
       );
 
   DataMap toMap() => {
+        "id": id,
+        "avatar": avatar,
         "createdAt": createdAt,
         "name": name,
-        "avatar": avatar,
-        "id": id,
       };
 }
