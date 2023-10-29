@@ -3,7 +3,6 @@ import 'package:tdd_bloc_clean_architecture/core/errors/exceptions.dart';
 import 'package:tdd_bloc_clean_architecture/core/errors/failure.dart';
 import 'package:tdd_bloc_clean_architecture/core/utils/typedef.dart';
 import 'package:tdd_bloc_clean_architecture/src/authentication/data/datasources/authentication_remote_data_source.dart';
-import 'package:tdd_bloc_clean_architecture/src/authentication/data/models/user_model.dart';
 import 'package:tdd_bloc_clean_architecture/src/authentication/domain/entities/user.dart';
 import 'package:tdd_bloc_clean_architecture/src/authentication/domain/repositories/authentication_repository.dart';
 
