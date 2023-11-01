@@ -48,10 +48,10 @@ void main() {
     test('should return a [JSON] string with the right data', () {
       final result = tModel.toJson();
       final tJson = jsonEncode({
-        "id": "1",
-        "avatar": "_empty.string",
-        "createdAt": "_empty.string",
-        "name": "_empty.string"
+        'id': '1',
+        'avatar': '_empty.string',
+        'createdAt': '_empty.string',
+        'name': '_empty.string',
       });
 
       expect(result, tJson);

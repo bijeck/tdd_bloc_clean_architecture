@@ -27,7 +27,7 @@ class AuthRemoteDataSrcImpl implements AuthenticationRemoteDataSource {
   Future<void> createUser(
       {required String createdAt,
       required String name,
-      required String avatar}) async {
+      required String avatar,}) async {
     try {
       final response =
           await _client.post(Uri.https(kBaseUrl, kCreateUserEndpoint),
@@ -36,7 +36,7 @@ class AuthRemoteDataSrcImpl implements AuthenticationRemoteDataSource {
                 'createdAt': createdAt,
                 'name': name,
               }),
-              headers: {'Content-Type': 'application/json'});
+              headers: {'Content-Type': 'application/json'},);
       if (response.statusCode != 200 && response.statusCode != 201) {
         throw APIException(
           message: response.body,
@@ -55,7 +55,7 @@ class AuthRemoteDataSrcImpl implements AuthenticationRemoteDataSource {
     try {
       final response = await _client.get(
           Uri.https(kBaseUrl, kCreateUserEndpoint),
-          headers: {'Content-Type': 'application/json'});
+          headers: {'Content-Type': 'application/json'},);
       if (response.statusCode != 200) {
         throw APIException(
           message: response.body,
@@ -64,7 +64,7 @@ class AuthRemoteDataSrcImpl implements AuthenticationRemoteDataSource {
       }
 
       return List<DataMap>.from(jsonDecode(response.body) as List)
-          .map((userModel) => UserModel.fromMap(userModel))
+          .map(UserModel.fromMap)
           .toList();
     } on APIException {
       rethrow;

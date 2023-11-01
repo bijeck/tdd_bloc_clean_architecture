@@ -154,7 +154,7 @@ void main() {
           final result = authRemoteDataSrc.getUsers;
 
           expect(
-            () => result(),
+            result,
             throwsA(
               const APIException(
                 message: 'Error in server',
@@ -165,7 +165,7 @@ void main() {
           verify(() => client.get(
                 Uri.https(kBaseUrl, kGetUsersEndpoint),
                 headers: {'Content-Type': 'application/json'},
-              )).called(1);
+              ),).called(1);
           verifyNoMoreInteractions(client);
         },
       );

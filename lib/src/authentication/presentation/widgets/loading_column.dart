@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class LoadingColumn extends StatelessWidget {
   const LoadingColumn({
-    super.key,
-    required this.message,
+    required this.message, super.key,
   });
 
   final String message;

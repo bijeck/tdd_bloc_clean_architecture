@@ -11,6 +11,16 @@ class UserModel extends User {
     required super.avatar,
   });
 
+  factory UserModel.fromJson(String str) =>
+      UserModel.fromMap(json.decode(str) as DataMap);
+
+  factory UserModel.fromMap(DataMap map) => UserModel(
+        createdAt: map['createdAt'] as String,
+        name: map['name'] as String,
+        avatar: map['avatar'] as String,
+        id: map['id'] as String,
+      );
+
   const UserModel.empty()
       : this(
           id: '1',
@@ -32,22 +42,12 @@ class UserModel extends User {
         id: id ?? this.id,
       );
 
-  factory UserModel.fromJson(String str) =>
-      UserModel.fromMap(json.decode(str) as DataMap);
-
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromMap(DataMap map) => UserModel(
-        createdAt: map["createdAt"] as String,
-        name: map["name"] as String,
-        avatar: map["avatar"] as String,
-        id: map["id"] as String,
-      );
-
   DataMap toMap() => {
-        "id": id,
-        "avatar": avatar,
-        "createdAt": createdAt,
-        "name": name,
+        'id': id,
+        'avatar': avatar,
+        'createdAt': createdAt,
+        'name': name,
       };
 }

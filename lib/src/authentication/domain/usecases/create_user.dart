@@ -3,13 +3,13 @@ import 'package:tdd_bloc_clean_architecture/core/usecase/usecase.dart';
 import 'package:tdd_bloc_clean_architecture/core/utils/typedef.dart';
 import 'package:tdd_bloc_clean_architecture/src/authentication/domain/repositories/authentication_repository.dart';
 
-class CreateUser extends UsecaseWithParams {
+class CreateUser extends UsecaseWithParams<void, CreateUserParams> {
   const CreateUser(this._repository);
   final AuthenticationRepository _repository;
 
   @override
-  ResultVoid call(params) async => _repository.createUser(
-        name: params.name,
+  ResultVoid call(dynamic params) async => _repository.createUser(
+        name: (params as CreateUserParams).name,
         avatar: params.avatar,
         createdAt: params.createdAt,
       );

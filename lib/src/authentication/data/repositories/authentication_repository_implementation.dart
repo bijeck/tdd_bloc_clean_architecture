@@ -20,7 +20,7 @@ class AuthenticationRepositoryImplementation
   }) async {
     try {
       await _remoteDataSource.createUser(
-          createdAt: createdAt, name: name, avatar: avatar);
+          createdAt: createdAt, name: name, avatar: avatar,);
       return const Right(null);
     } on APIException catch (e) {
       return Left(ApiFailure.fromException(e));

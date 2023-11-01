@@ -35,7 +35,7 @@ void main() {
               createdAt: any(named: 'createdAt'),
               name: any(named: 'name'),
               avatar: any(named: 'avatar'),
-            )).thenAnswer((_) async => Future.value());
+            ),).thenAnswer((_) async => Future.value());
 
         final result = await repositoryImp.createUser(
           name: name,
@@ -48,7 +48,7 @@ void main() {
               createdAt: createdAt,
               name: name,
               avatar: avatar,
-            )).called(1);
+            ),).called(1);
         verifyNoMoreInteractions(remoteDataSource);
       },
     );
@@ -60,7 +60,7 @@ void main() {
               createdAt: any(named: 'createdAt'),
               name: any(named: 'name'),
               avatar: any(named: 'avatar'),
-            )).thenThrow(tException);
+            ),).thenThrow(tException);
 
         final result = await repositoryImp.createUser(
           name: name,
@@ -83,7 +83,7 @@ void main() {
               createdAt: createdAt,
               name: name,
               avatar: avatar,
-            )).called(1);
+            ),).called(1);
         verifyNoMoreInteractions(remoteDataSource);
       },
     );

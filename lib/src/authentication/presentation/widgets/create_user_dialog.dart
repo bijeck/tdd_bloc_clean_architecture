@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tdd_bloc_clean_architecture/src/authentication/presentation/bloc/authentication_bloc.dart';
 
 class CreateUserDialog extends StatelessWidget {
-  const CreateUserDialog({super.key, required this.controller});
+  const CreateUserDialog({required this.controller, super.key});
 
   final TextEditingController controller;
 

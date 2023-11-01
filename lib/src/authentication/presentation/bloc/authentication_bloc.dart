@@ -32,7 +32,7 @@ class AuthenticationBloc
       createdAt: event.createdAt,
       name: event.name,
       avatar: event.avatar,
-    ));
+    ),);
 
     result.fold(
       (failure) => emit(AuthenticationError(failure.errorMessage)),

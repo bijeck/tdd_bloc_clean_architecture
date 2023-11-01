@@ -6,7 +6,7 @@ import 'package:tdd_bloc_clean_architecture/src/authentication/presentation/view
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  init();
+  await init();
   runApp(const MyApp());
 }
 
