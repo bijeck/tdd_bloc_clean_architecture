@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tdd_bloc_clean_architecture/core/services/injections.dart';
+import 'package:tdd_bloc_clean_architecture/src/authentication/presentation/bloc/authentication_bloc.dart';
+import 'package:tdd_bloc_clean_architecture/src/authentication/presentation/screens/home_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  init();
   runApp(const MyApp());
 }
 
@@ -9,6 +15,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return BlocProvider(
+      create: (context) => sl<AuthenticationBloc>(),
+      child: MaterialApp(
+        theme: ThemeData(
+          useMaterial3: true,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: const HomeScreen(),
+      ),
+    );
   }
 }
