@@ -36,7 +36,7 @@ void main() {
     blocTest<AuthenticationBloc, AuthenticationState>(
       'should emit [CreatingUser, UserCreated] when successful',
       build: () {
-        when(() => createUser(any())).thenAnswer(
+        when(() => createUser(any<CreateUserParams>())).thenAnswer(
           (_) async => const Right(null),
         );
         return bloc;
@@ -61,7 +61,7 @@ void main() {
     blocTest<AuthenticationBloc, AuthenticationState>(
       'should emit [CreatingUser, AuthenticationError] when unsuccessful',
       build: () {
-        when(() => createUser(any())).thenAnswer(
+        when(() => createUser(any<CreateUserParams>())).thenAnswer(
           (_) async => const Left(tAPIFailure),
         );
         return bloc;

@@ -31,11 +31,13 @@ void main() {
       'should call the [RemoteDataSource.createUser] and complete '
       'successfully when the call to the remote source is successful',
       () async {
-        when(() => remoteDataSource.createUser(
-              createdAt: any(named: 'createdAt'),
-              name: any(named: 'name'),
-              avatar: any(named: 'avatar'),
-            ),).thenAnswer((_) async => Future.value());
+        when(
+          () => remoteDataSource.createUser(
+            createdAt: any(named: 'createdAt'),
+            name: any(named: 'name'),
+            avatar: any(named: 'avatar'),
+          ),
+        ).thenAnswer((_) async => Future.value());
 
         final result = await repositoryImp.createUser(
           name: name,
@@ -44,11 +46,13 @@ void main() {
         );
 
         expect(result, equals(const Right(null)));
-        verify(() => remoteDataSource.createUser(
-              createdAt: createdAt,
-              name: name,
-              avatar: avatar,
-            ),).called(1);
+        verify(
+          () => remoteDataSource.createUser(
+            createdAt: createdAt,
+            name: name,
+            avatar: avatar,
+          ),
+        ).called(1);
         verifyNoMoreInteractions(remoteDataSource);
       },
     );
@@ -56,11 +60,13 @@ void main() {
       'should return a [APIFailure] when the call to the remote '
       'source is unsuccessful',
       () async {
-        when(() => remoteDataSource.createUser(
-              createdAt: any(named: 'createdAt'),
-              name: any(named: 'name'),
-              avatar: any(named: 'avatar'),
-            ),).thenThrow(tException);
+        when(
+          () => remoteDataSource.createUser(
+            createdAt: any(named: 'createdAt'),
+            name: any(named: 'name'),
+            avatar: any(named: 'avatar'),
+          ),
+        ).thenThrow(tException);
 
         final result = await repositoryImp.createUser(
           name: name,
@@ -79,11 +85,13 @@ void main() {
             ),
           ),
         );
-        verify(() => remoteDataSource.createUser(
-              createdAt: createdAt,
-              name: name,
-              avatar: avatar,
-            ),).called(1);
+        verify(
+          () => remoteDataSource.createUser(
+            createdAt: createdAt,
+            name: name,
+            avatar: avatar,
+          ),
+        ).called(1);
         verifyNoMoreInteractions(remoteDataSource);
       },
     );
@@ -103,7 +111,10 @@ void main() {
 
         final result = await repositoryImp.getUser();
 
-        expect(result, equals(const Right(expectedUsers)));
+        expect(
+          result,
+          equals(const Right<void, List<UserModel>>(expectedUsers)),
+        );
         verify(() => remoteDataSource.getUsers()).called(1);
         verifyNoMoreInteractions(remoteDataSource);
       },
@@ -118,7 +129,10 @@ void main() {
 
         final result = await repositoryImp.getUser();
 
-        expect(result, equals(Left(ApiFailure.fromException(tException))));
+        expect(
+          result,
+          equals(Left<Failure, void>(ApiFailure.fromException(tException))),
+        );
         verify(() => remoteDataSource.getUsers()).called(1);
         verifyNoMoreInteractions(remoteDataSource);
       },

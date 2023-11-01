@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       : const SizedBox.shrink(),
           floatingActionButton: FloatingActionButton.extended(
             onPressed: () {
-              showDialog(
+              showDialog<CreateUserDialog>(
                 context: context,
                 builder: (context) => CreateUserDialog(
                   controller: textController,
