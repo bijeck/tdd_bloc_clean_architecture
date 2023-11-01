@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tdd_bloc_clean_architecture/core/services/injections.dart';
 import 'package:tdd_bloc_clean_architecture/src/authentication/presentation/bloc/authentication_bloc.dart';
-import 'package:tdd_bloc_clean_architecture/src/authentication/presentation/screens/home_screen.dart';
+import 'package:tdd_bloc_clean_architecture/src/authentication/presentation/views/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
