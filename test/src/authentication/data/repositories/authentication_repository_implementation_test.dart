@@ -45,7 +45,7 @@ void main() {
           createdAt: createdAt,
         );
 
-        expect(result, equals(const Right(null)));
+        expect(result, equals(const Right<void, void>(null)));
         verify(
           () => remoteDataSource.createUser(
             createdAt: createdAt,
@@ -77,7 +77,7 @@ void main() {
         expect(
           result,
           equals(
-            Left(
+            Left<Failure, void>(
               ApiFailure(
                 message: tException.message,
                 statusCode: tException.statusCode,
