@@ -1,11 +1,11 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:tdd_bloc_clean_architecture/core/errors/exceptions.dart';
 import 'package:tdd_bloc_clean_architecture/core/utils/constants.dart';
 import 'package:tdd_bloc_clean_architecture/core/utils/typedef.dart';
 import 'package:tdd_bloc_clean_architecture/src/authentication/data/models/user_model.dart';
-import 'package:http/http.dart' as http;
 
 abstract class AuthenticationRemoteDataSource {
   Future<void> createUser({
