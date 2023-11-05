@@ -6,7 +6,7 @@ import 'package:tdd_bloc_clean_architecture/src/authentication/presentation/view
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await init();
+  await configureDependencies();
   runApp(const MyApp());
 }
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<AuthenticationBloc>(),
+      create: (context) => getIt<AuthenticationBloc>(),
       child: MaterialApp(
         theme: ThemeData(
           useMaterial3: true,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:injectable/injectable.dart';
 import 'package:tdd_bloc_clean_architecture/core/errors/exceptions.dart';
 import 'package:tdd_bloc_clean_architecture/core/utils/constants.dart';
 import 'package:tdd_bloc_clean_architecture/core/utils/typedef.dart';
@@ -19,6 +20,7 @@ abstract class AuthenticationRemoteDataSource {
 const kCreateUserEndpoint = '/test-api/users';
 const kGetUsersEndpoint = '/test-api/users';
 
+@LazySingleton(as: AuthenticationRemoteDataSource)
 class AuthRemoteDataSrcImpl implements AuthenticationRemoteDataSource {
   const AuthRemoteDataSrcImpl(this._client);
 

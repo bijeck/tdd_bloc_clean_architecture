@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tdd_bloc_clean_architecture/core/errors/exceptions.dart';
 import 'package:tdd_bloc_clean_architecture/core/errors/failure.dart';
 import 'package:tdd_bloc_clean_architecture/core/utils/typedef.dart';
@@ -6,6 +7,7 @@ import 'package:tdd_bloc_clean_architecture/src/authentication/data/datasources/
 import 'package:tdd_bloc_clean_architecture/src/authentication/domain/entities/user.dart';
 import 'package:tdd_bloc_clean_architecture/src/authentication/domain/repositories/authentication_repository.dart';
 
+@LazySingleton(as: AuthenticationRepository)
 class AuthenticationRepositoryImplementation
     implements AuthenticationRepository {
   const AuthenticationRepositoryImplementation(this._remoteDataSource);
