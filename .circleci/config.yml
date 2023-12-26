@@ -8,7 +8,6 @@ jobs:
             name: android/android-machine
         steps:
             - flutter/install_sdk:
-                version: 3.2.4
             - checkout
             - run:
                 command: flutter pub get
