@@ -1,18 +1,9 @@
-version: "2.1"
-orbs:
-    android: circleci/android@1.0.3
-    flutter: circleci/flutter@2.0.0
+version: 2.1
 jobs:
-    distribute:
-        executor:
-            name: android/android-machine
-        steps:
-            - checkout
-            - flutter/install_sdk_and_pub:
-                version: 3.0.3
-            - run:
-                command: flutter pub get
-workflows:
-    distribute:
-        jobs:
-            - distribute
+  build:
+    docker:
+      - image: ghcr.io/cirruslabs/flutter:3.16.5
+    steps:
+      - checkout
+      - run: flutter doctor
+      - run: flutter test
