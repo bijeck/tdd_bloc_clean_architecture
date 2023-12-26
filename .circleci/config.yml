@@ -3,34 +3,18 @@ orbs:
     android: circleci/android@1.0.3
     flutter: circleci/flutter@2.0.0
 jobs:
-  install_sdk_and_pub:
-      description: |
-          Install Flutter SDK and your flutter packages with automated caching and best practices applied. Requires lock file.
-      parameters:
-          app-dir:
-              default: .
-              description: Path to the directory containing your pubspec.yaml file. Not needed if pubspec.yaml lives in the root.
-              type: string
-          cache-version:
-              default: v1
-              description: Change the default cache version if you need to clear the cache for any reason.
-              type: string
-          install-location:
-              default: ~/development
-              description: Install path for the Flutter binaries.
-              type: string
-          version:
-              default: 3.2.4
-              description: The target version for the Flutter SDK.
-              type: string
-      steps:
-          - install_sdk:
-              install-location: <<parameters.install-location>>
-              version: <<parameters.version>>
-          - install_pub:
-              app-dir: <<parameters.app-dir>>
-              cache-version: <<parameters.app-dir>>
+    distribute:
+        executor:
+            name: android/android-machine
+        steps:
+            - flutter/install_sdk_and_pub:
+                version: 3.0.3
+            - flutter/install_android_gradle_dependencies
+            - flutter/install_android_gem
+            - run:
+                command: bundle exec fastlane distribute
+                working_directory: ios
 workflows:
-  distribute:
-      jobs:
-          - install_sdk_and_pub
+    distribute:
+        jobs:
+            - distribute
