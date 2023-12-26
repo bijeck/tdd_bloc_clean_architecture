@@ -7,7 +7,7 @@ jobs:
         executor:
             name: android/android-machine
         steps:
-            - install_sdk:
+            - flutter/install_sdk:
                 version: 3.2.4
             - checkout
             - command:
