@@ -10,8 +10,8 @@ jobs:
             - flutter/install_sdk:
                 version: 3.2.4
             - checkout
-            - command:
-                run: flutter pub get
+            - run:
+                command: flutter pub get
 workflows:
     distribute:
         jobs:
