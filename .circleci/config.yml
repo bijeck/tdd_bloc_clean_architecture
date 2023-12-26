@@ -1,26 +1,36 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/configuration-reference
-version: 2.1
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/configuration-reference/#jobs
+version: "2.1"
+orbs:
+    android: circleci/android@1.0.3
+    flutter: circleci/flutter@2.0.0
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/configuration-reference/#executor-job
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/configuration-reference/#steps
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/configuration-reference/#workflows
+  install_sdk_and_pub:
+      description: |
+          Install Flutter SDK and your flutter packages with automated caching and best practices applied. Requires lock file.
+      parameters:
+          app-dir:
+              default: .
+              description: Path to the directory containing your pubspec.yaml file. Not needed if pubspec.yaml lives in the root.
+              type: string
+          cache-version:
+              default: v1
+              description: Change the default cache version if you need to clear the cache for any reason.
+              type: string
+          install-location:
+              default: ~/development
+              description: Install path for the Flutter binaries.
+              type: string
+          version:
+              default: 3.2.4
+              description: The target version for the Flutter SDK.
+              type: string
+      steps:
+          - install_sdk:
+              install-location: <<parameters.install-location>>
+              version: <<parameters.version>>
+          - install_pub:
+              app-dir: <<parameters.app-dir>>
+              cache-version: <<parameters.app-dir>>
 workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
+  distribute:
+      jobs:
+          - install_sdk_and_pub
